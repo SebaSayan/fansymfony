@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte
+{% endblock %}
+
+{% block content %}
+	<section>
+		<h2 class="text-center text-white">Mon compte</h2>
+		<br>
+		<ul class="m-0">
+			<br>
+			<li>
+				<a href="{{path('account_password')}}">Modifier mon mot de passe</a>
+			</li>
+			{% if is_granted('ROLE_ADMIN') %}
+				<li>
+					<a href="{{path('account_message')}}">Voir les messages du formulaire</a>
+				</li>
+			{% endif %}
+			<br>
+		</ul>
+		<hr id="hr-1">
+	</section>
+{% endblock %}

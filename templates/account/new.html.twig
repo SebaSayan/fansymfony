@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau message
+{% endblock %}
+
+{% block content %}
+
+	<section>
+		<h2 class="text-center text-white">Envoyer un nouveau message</h2>
+		<br>
+		<div class="container">
+			<div class="row">
+
+				{{form_start(form)}}
+				{{ form_row(form.name,{'label':false, 'value':app.user.firstName, 'attr':{'placeholder':"Votre nom"}})}}
+				{{ form_row(form.email,{'label':false, 'attr':{'placeholder':"Email du client"}})}}
+				{{ form_row(form.subject,{'label':false, 'attr':{'placeholder':"Le sujet"}})}}
+				{{ form_row(form.content,{'label':false, 'attr':{'placeholder':"Votre message"}})}}
+				{{form_end(form)}}
+
+			</div>
+		</div>
+		<hr id="hr-1">
+	</section>
+{% endblock %}

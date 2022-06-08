@@ -4,6 +4,9 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    mailjet_public_key: '%env(mailjet_public_key)%'
+    mailjet_private_key: '%env(mailjet_private_key)%'
+    webmaster_email: '%env(webmaster_email)%'
 
 services:
     # default configuration for services in *this* file
@@ -22,3 +25,4 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+

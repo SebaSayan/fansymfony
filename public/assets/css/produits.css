@@ -1,0 +1,6 @@
+.display-accueil,
+.display-photos,
+.display-tarifs,
+.display-contact {
+    display: none;
+}

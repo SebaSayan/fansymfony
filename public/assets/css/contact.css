@@ -1,0 +1,10 @@
+.display-accueil,
+.display-photos,
+.display-tarifs,
+.display-produits {
+    display: none;
+}
+
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+}

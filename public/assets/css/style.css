@@ -1,0 +1,194 @@
+header,
+.display-accueil,
+.display-photos,
+.display-tarifs,
+.display-produits,
+footer {
+    font-family: "Times New Roman", Times, serif;
+    text-shadow: 3px 3px 3px black;
+}
+
+#fancoiffure-header {
+    background-image: url("/assets/uploads/hairlg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.cadre {
+    background-image: url("/assets/uploads/cadre.jpg");
+    background-size: 100% 100%;
+}
+
+.cadre1 {
+    background-image: url("/assets/uploads/cadre1.jpg");
+    background-size: 100% 100%;
+}
+
+#content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#content img {
+    max-width: 200px;
+}
+
+#header-text {
+    font-family: "Times New Roman", Times, serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 80px;
+    text-align: right;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#header-text a {
+    color: white;
+    text-decoration: unset;
+}
+
+footer {
+    background-image: url("/assets/uploads/hairlg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+section {
+    background-image: url("/assets/uploads/hairlg.jpg");
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+.menu-size {
+    font-size: 30px;
+}
+
+.ico-size {
+    background-color: white;
+    font-size: 50px;
+}
+
+.carouselSize {
+    height: 600px;
+}
+
+#hr-1 {
+    color: rgb(60, 100, 255);
+    opacity: 1;
+    height: 10px;
+    margin: 0;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: wheat;
+}
+
+.icon {
+    fill: rgb(255, 255, 255);
+}
+
+.page {
+    width: 31.5px;
+    height: 31.5px;
+    display: flex;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    z-index: 2;
+    transition: all 0.3s ease 0s;
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+
+.top1 {
+    position: fixed;
+    z-index: 999999;
+    display: inline-flex;
+    transition: opacity 0.3s ease 0s;
+    opacity: 1;
+    inset: auto 0px 0px auto;
+}
+
+.top2 {
+    padding: 18.6667px 4.66667px 4.66667px 18.6667px;
+    position: relative;
+    display: flex;
+    -moz-box-pack: center;
+    justify-content: center;
+    -moz-box-align: center;
+    align-items: center;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    border-radius: 100px 0px 0px;
+    top: 0px;
+    backface-visibility: hidden;
+    background-color: rgb(33, 37, 41);
+    color: rgb(255, 255, 255);
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+.top2:hover {
+    background-color: rgb(28, 31, 35);
+}
+
+.text-container {
+    width: 100%;
+    height: 150px;
+    padding: 2rem;
+    visibility: hidden;
+    transform: translateY(300px);
+    opacity: 0;
+    transition: all 0.8s ease;
+    background: linear-gradient(45deg, rgb(30, 30, 30) 0%, transparent 72%);
+    color: white;
+    overflow: hidden;
+}
+
+.text {
+    position: absolute;
+    bottom: 5rem;
+}
+
+.active .text-container {
+    visibility: visible;
+    transform: translateY(100px);
+    opacity: 1;
+}
+
+@media screen and (max-width: 767px) {
+    #content {
+        grid-template-columns: 1fr;
+    }
+    #header-text {
+        text-align: left;
+        margin-bottom: 0;
+        font-size: 40px;
+    }
+    .carouselSize {
+        height: 350px;
+    }
+}
+
+@media screen and (min-width: 450px) {
+    .cadre {
+        font-size: 1.3rem;
+    }
+}

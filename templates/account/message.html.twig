@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messagerie
+{% endblock %}
+
+{% block content %}
+	<section>
+		<h2 class="text-center text-white">Messagerie</h2>
+		<br>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col">
+					<div class="d-flex align-items-end flex-column bd-highlight mb-3">
+						<a href="{{path('account_new_message')}}" class="p-2 bd-highlight btn btn-dark mb-4">Nouveau messages</a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				{% for mess in message %}
+					<div class="border col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 card cadre1 mb-3 text-white">
+						<div class="card-header text-center">
+							Message de
+							{{mess.name}}
+							{% if mess.answered == true %}
+								<span class="fst-italic">
+									- Répondu</span>
+							{% endif %}
+						</div>
+						<div class="card-body">
+							<h5 class="card-title text-center">
+								<span class="text-muted">
+									Sujet :
+								</span>
+								{{mess.subject}}</h5><hr>
+							<p class="card-text">{{mess.content | nl2br}}</p><hr>
+							<p class="card-text text-center">
+								<span class="text-muted">Email :
+								</span>
+								{{mess.email}}</p>
+						</div>
+						<div class="card-footer text-muted text-center">
+							envoyé le
+							{{mess.createdAt | date('d F Y')}}
+							à
+							{{mess.createdAt | date('H')}}h{{mess.createdAt | date('i')}}<br><hr>
+							<a href="{{path('account_message_reply',{'id':mess.id})}}" class="btn btn-dark col-5">Répondre</a>
+							{% if mess.answered == true %}
+								<a href="{{path('account_message_delete',{'id':mess.id})}}" class="btn btn-dark col-5" onclick="return confirm('Etes vous sur de vouloir supprimer le message de {{mess.name}}')">Supprimer</a>
+							{% endif %}
+						</strong><br>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<hr id="hr-1">
+</section>{% endblock %}

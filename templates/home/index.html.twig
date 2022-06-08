@@ -1,0 +1,267 @@
+{% extends 'base.html.twig' %}
+{% block title %}Fan'Coiffure - elles prennent soin de vos cheveux
+{% endblock %}
+
+{% block content %}
+	{% for event in event %}
+		{% if event.active == true %}
+			<div style="font-family: 'Times New Roman', Times, serif;" class="alert alert-primary alert-dismissible fade show m-0 text-black fs-3 text-center" role="alert">
+				<h2 class="fw-bold">{{event.name}}</h2><br>
+				{{event.message | nl2br}}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		{% endif %}
+	{% endfor %}
+	<section class="display-accueil">
+		<h2 class="text-white d-none">Accueil</h2>
+		<div class="container-fluid">
+			<div class="row">
+				<div clas="col-12 col-md-6">
+					<div id="carouselExampleFade" class="carousel slide carousel-fade mt-3" data-bs-ride="carousel">
+						<div class="carousel-inner">
+							{% for img in carousel %}
+								{% if img.size == 'large' %}
+									<div class="carousel-item {% if img.active == true %}active{% endif %}">
+										<div class="d-flex justify-content-center">
+											<picture>
+												<source media="(max-width: 1000px)" srcset="assets/uploads/{{img.image}}small{{img.extention}}">
+												<img alt="{{img.name}}" class="d-block carouselSize logo w-100 h-100" src="assets/uploads/{{img.image}}large{{img.extention}}">
+											</picture>
+											<div class="text text-container">
+												<h3 class="fs-2">{{img.subtitle}}</h3>
+												<p class="fs-5">{{img.description}}</p>
+											</div>
+										</div>
+									</div>
+								{% endif %}
+							{% endfor %}
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+				</div>
+				<div class="col">
+					<div class="container-fluid text-white cadre">
+						<h2 class="text-center pt-3">Les horaires</h2>
+						<div class="row justify-content-around">
+							<div class="col-12 col-lg-5 mt-4 mb-4 fs-4">
+								{% for h in horaires %}
+									<ul class="p-0">
+										<li title="{{h.jour}}">{{h.jour}}
+											<p class="float-end">
+												{% if h.ouverture == 0 %}
+													Fermé
+												{% else %}
+													{{h.ouverture}}
+													-
+													{{h.fermeture}}
+												{% endif %}
+											</p>
+										</li>
+									</ul>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr id="hr-1">
+	</section>
+
+	<section class="display-photos" id="photos">
+		<h2 class="text-white text-center">Photos</h2>
+		<div class="container">
+			<iframe class="display-iframe" src="{{path('instagram')}}" width="100%" height="2700px"></iframe>
+			<script src="assets/js/instagram.js"></script>
+		</div>
+		<div class="message_avertissement_javascript alert alert-danger text-center m-0" role="alert">
+			Attention, le
+			<a href="#" class="alert-link">Javascript</a>
+			doit être activé pour le bon fonctionnement du site.<br>La section "Photos" est exclusiement conçu en Javascript.
+		</div>
+		<hr id="hr-1">
+	</section>
+
+
+	<section class="display-tarifs" id="tarifs">
+		<div class="container text-white cadre">
+			<div class="row justify-content-around">
+				<h2 class="text-white text-center pt-5">Les tarifs</h2>
+				<div class="col-12 col-lg-5 mt-4 mb-4">
+					<h3 class="mt-4 mb-4 text-center">Coiffage ( -20 ans -10% )</h3><hr>
+					{% for TC in tarifsCoiffage %}
+						<ul class="p-0">
+							<li title="{{TC.description}}">{{TC.name}}
+								<p class="fw-bold float-end">
+									{% if TC.price != TC.priceMax %}
+										entre
+										{{((TC).price / 100) | number_format(2)}}
+										€ et
+										{{((TC).priceMax / 100) | number_format(2)}}
+										€
+									{% else %}
+										{% if (TC.fromTo == true) %}
+											à partir de
+											{{((TC).price / 100) | number_format(2)}}
+											€
+										{% else %}
+											{% if TC.price == 0 %}
+												Sur devis
+											{% else %}
+												{{((TC).price / 100) | number_format(2)}}
+												€
+											{% endif %}
+										{% endif %}
+									{% endif %}
+								</p>
+							</li>
+						</ul>
+					{% endfor %}
+				</div>
+
+				<div class="col-12 col-lg-5 mt-4 mb-4">
+					<h3 class="mt-4 mb-4 text-center">Techniques ( -20 ans -10% )</h3><hr>
+					{% for TT in tarifsTechniques %}
+						<ul class="p-0">
+							<li title="{{TT.description}}">{{TT.name}}
+								<p class="fw-bold float-end">
+									{% if TT.price != TT.priceMax %}
+										entre
+										{{((TT).price / 100) | number_format(2)}}
+										€ et
+										{{((TT).priceMax / 100) | number_format(2)}}
+										€
+									{% else %}
+										{% if (TT.fromTo == true) %}
+											à partir de
+											{{((TT).price / 100) | number_format(2)}}
+											€
+										{% else %}
+											{% if TT.price == 0 %}
+												Sur devis
+											{% else %}
+												{{((TT).price / 100) | number_format(2)}}
+												€
+											{% endif %}
+										{% endif %}
+									{% endif %}
+								</p>
+							</li>
+						</ul>
+					{% endfor %}
+				</div>
+
+				<div class="col-12 col-lg-5 mt-4 mb-4">
+					<h3 class="mt-4 mb-4 text-center">Tarifs homme</h3><hr>
+					{% for TH in tarifsHomme %}
+						<ul class="p-0">
+							<li title="{{TH.description}}">{{TH.name}}
+								<p class="fw-bold float-end">
+									{% if TH.price != TH.priceMax %}
+										entre
+										{{((TH).price / 100) | number_format(2)}}
+										€ et
+										{{((TH).priceMax / 100) | number_format(2)}}
+										€
+									{% else %}
+										{% if (TH.fromTo == true) %}
+											à partir de
+											{{((TH).price / 100) | number_format(2)}}
+											€
+										{% else %}
+											{% if TH.price == 0 %}
+												Sur devis
+											{% else %}
+												{{((TH).price / 100) | number_format(2)}}
+												€
+											{% endif %}
+										{% endif %}
+									{% endif %}
+								</p>
+							</li>
+						</ul>
+					{% endfor %}
+				</div>
+
+				<div class="col-12 col-lg-5 mt-4 mb-4">
+					<h3 class="mt-4 mb-4 text-center">Tarifs enfant</h3><hr>
+					{% for TE in tarifsEnfant %}
+						<ul class="p-0">
+							<li title="{{TE.description}}">{{TE.name}}
+								<p class="fw-bold float-end">
+									{% if TE.price != TE.priceMax %}
+										entre
+										{{((TE).price / 100) | number_format(2)}}
+										€ et
+										{{((TE).priceMax / 100) | number_format(2)}}
+										€
+									{% else %}
+										{% if (TE.fromTo == true) %}
+											à partir de
+											{{((TE).price / 100) | number_format(2)}}
+											€
+										{% else %}
+											{% if TE.price == 0 %}
+												Sur devis
+											{% else %}
+												{{((TE).price / 100) | number_format(2)}}
+												€
+											{% endif %}
+										{% endif %}
+									{% endif %}
+								</p>
+							</li>
+						</ul>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<hr id="hr-1">
+	</section>
+
+	<section class="display-produits" id="produits">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<h2 class="text-white text-center">Nos produits</h1>
+				</div>
+				<div class="row d-flex justify-content-around">
+					{% for product in product %}
+						<div class="col-12 col-md-6 col-lg-4">
+							<div class="card mb-3 border cadre1 text-white" style="width: 18rem;" title="{{product.subtitle}}">
+								<a href="{{ path('show_product', {'slug': product.slug}) }}">
+									<img src="assets/uploads/{{product.illustration}}" class="card-img-top" alt="{{product.name}}"></a>
+								<div class="card-body">
+									<h5 class="card-title">{{product.name}}</h5>
+									<p class="card-text fw-bold">{{((product).price / 100) | number_format(2)}}
+										€</p>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<hr id="hr-1">
+	</section>
+	<section class="display-contact" id="contact">
+		<h2 class="text-white text-center">Contact</h1>
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 col-xl-7">
+					<div class="text-white p-0 mb-3">Vous avez des questions sur nos prestations ? Contactez-nous par téléphone au 04 92 04 46 54, ou via ce formulaire de contact, nous vous répondrons dans les plus brefs délais.</div>
+					{{form(form)}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr id="hr-1">
+	</section>
+{% endblock %}
