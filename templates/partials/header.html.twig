@@ -20,25 +20,25 @@
 							<span class="navbar-toggler-icon"></span>
 						</button>
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav animate__animated animate__slideInRight menu-size">
+							<ul class="nav-rwd navbar-nav animate__animated animate__slideInRight menu-size">
 								<li class="nav-item">
-									<a class=" nav-link mx-4" style="text-transform: uppercase;" aria-current="page" onclick="switchStyle('assets/css/accueil.css')" href="{{asset('/')}}#accueil">Accueil</a>
+									<a class=" nav-link mx-4" style="text-transform: uppercase;" aria-current="page" onclick="switchStyle('public/assets/css/accueil.css')" href="{{asset('/')}}#accueil">Accueil</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link mx-4" style="text-transform: uppercase;" onclick="switchStyle('assets/css/photos.css')" href="{{asset('/')}}#photos">Photos</a>
+									<a class="nav-link mx-4" onclick="switchStyle('public/assets/css/photos.css')" href="{{asset('/')}}#photos">Photos</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link mx-4" style="text-transform: uppercase;" onclick="switchStyle('assets/css/tarifs.css')" href="{{asset('/')}}#tarifs">Tarifs</a>
+									<a class="nav-link mx-4" onclick="switchStyle('public/assets/css/tarifs.css')" href="{{asset('/')}}#tarifs">Tarifs</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link mx-4" style="text-transform: uppercase;" onclick="switchStyle('assets/css/produits.css')" href="{{asset('/')}}#produits">Produits</a>
+									<a class="nav-link mx-4" onclick="switchStyle('public/assets/css/produits.css')" href="{{asset('/')}}#produits">Produits</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link mx-4" style="text-transform: uppercase;" onclick="switchStyle('assets/css/contact.css')" href="{{asset('/')}}#contact">Contact</a>
+									<a class="nav-link mx-4" onclick="switchStyle('public/assets/css/contact.css')" href="{{asset('/')}}#contact">Contact</a>
 								</li>
 							</ul>
 							{% if app.user %}
-								<ul class="navbar-nav ms-auto mb-2 mb-md-0 animate__animated animate__slideInLeft menu-size">
+								<ul class="nav-rwd nav-user navbar-nav ms-auto mb-2 mb-md-0 animate__animated animate__slideInLeft menu-size">
 									<li class="nav-item ">
 										<a class="nav-link mx-4" href="{{path('logout')}}">Déconnexion</a>
 									</li>
@@ -54,15 +54,6 @@
 		</div>
 	</div>
 	<hr id="hr-1">
-	<a href="#accueil">
-		<div class="top1">
-			<div class="top2">
-				<svg class="icon page" viewbox="0 0 24 24">
-					<path d="M7.997 10l3.515-3.79a.672.672 0 0 1 .89-.076l.086.075L16 10 13 10.001V18h-2v-7.999L7.997 10z"></path>
-				</svg>
-			</div>
-		</div>
-	</a>
 </header>
 {% for label,messages in app.flashes %}
 	<div style="font-family: 'Times New Roman', Times, serif;" class="alert alert-{{label}} alert-dismissible text-center fade show m-0" role="alert">

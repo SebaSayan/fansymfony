@@ -34,7 +34,7 @@ removeContact.removeAttribute("id");
 
 let newCss = document.createElement('link');
 newCss.id = 'switchStyle';
-newCss.href = "{{asset('assets/css/accueil.css')}}";
+newCss.href = "{{asset('public/assets/css/accueil.css')}}";
 
 document.body.appendChild(newCss);
 
@@ -45,13 +45,13 @@ document.body.appendChild(newCss);
 let urlActual = document.location.href;
 let urlClean = urlActual.replace(/\/$/, "");
 endUrl = urlClean.substring(urlClean.lastIndexOf("#") + 1);
-let css = ('assets/css/' + endUrl + '.css');
+let css = ('public/assets/css/' + endUrl + '.css');
 
-if (css == 'assets/css/' + urlClean + '.css') {
-    css = ('assets/css/accueil.css');
+if (css == 'public/assets/css/' + urlClean + '.css') {
+    css = ('public/assets/css/accueil.css');
 
 } else {
-    css = ('assets/css/' + endUrl + '.css');
+    css = ('public/assets/css/' + endUrl + '.css');
 }
 
 document.getElementById("switchStyle").setAttribute("href", css);

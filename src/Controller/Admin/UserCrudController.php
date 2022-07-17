@@ -40,10 +40,10 @@ class UserCrudController extends AbstractCrudController
             TextField::new('firstName')->setLabel('Prénom'),
             TextField::new('lastName')->setLabel('Nom'),
             EmailField::new('email')->setLabel('Em@il'),
-            ChoiceField::new('roles')->setChoices(['Admin' => 'ROLE_ADMIN', 'Utilisateur' => 'ROLE_USER'])->allowMultipleChoices(),
-            BooleanField::new('active'),
             TextField::new('password')->setFormType(PasswordType::class)->setLabel('Mot de passe')->onlyWhenCreating(),
             TextField::new('password_confirm')->setFormType(PasswordType::class)->setLabel('Confirmation mot de passe')->onlyWhenCreating(),
+            ChoiceField::new('roles')->setChoices(['Admin' => 'ROLE_ADMIN', 'Utilisateur' => 'ROLE_USER'])->allowMultipleChoices(),
+            BooleanField::new('active'),
         ];
     }
 

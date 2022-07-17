@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProductRepository;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -55,6 +56,7 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Gedmo\Slug(fields={"name"})
      */
     private $slug;
 
@@ -128,10 +130,10 @@ class Product
         return $this->slug;
     }
 
-    /*     public function setSlug(string $slug): self
+         public function setSlug(string $slug): self
     {
         $this->slug = $slug;
 
         return $this;
-    } */
+    } 
 }

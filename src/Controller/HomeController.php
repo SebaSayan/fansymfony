@@ -50,7 +50,7 @@ class HomeController extends AbstractController
 
             // Envoie le mail aux admins
             $title = '<h1>Formulaire de contact</h1><br>';
-            $content = trim(stripslashes(nl2br($title . 'Bonjour Fanny, voici le message qui vous a été envoyé.<br><br><br>' .
+            $content = trim(stripslashes(nl2br($title . 'Bonjour, voici le message qui vous a été envoyé.<br><br><br>' .
                 'Sujet : ' . $message->getSubject() . '<br><br>' . $message->getContent() . '<br><br>' . 'Nom : ' . $message->getName() . '<br>' . 'Email : ' . $message->getEmail())));
             $mail->sendMail($this->getParameter('webmaster_email'), $message->getName(), "Message du formulaire", $content = trim(stripslashes(nl2br($content))));
 
@@ -62,7 +62,7 @@ class HomeController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Le message a bien été envoyer, vous allez recevoir un mail de confirmation.'
+                'Le message a bien été envoyé, vous allez recevoir un mail de confirmation.'
             );
 
             return $this->redirectToRoute('home');

@@ -78,7 +78,7 @@ class AccountMessageController extends AbstractController
 
         $this->addFlash(
             'success',
-            "Le message a bien été supprimée"
+            "Le message a bien été supprimé"
         );
         return $this->redirectToRoute('account_message');
     }

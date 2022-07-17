@@ -33,14 +33,15 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
+            ->disableUrlSignatures()
             ->setTitle('Tableau de board');
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToUrl('Retour au site', 'fas fa-cut', "/");
-        yield MenuItem::linkToCrud('Carousel', 'fa fa-home', Carousel::class);
-        /* yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
+        /* yield MenuItem::linkToCrud('Carousel', 'fa fa-home', Carousel::class);
+        yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', User::class);
         yield MenuItem::linkToCrud('Horaires', 'fas fa-clock', Horaires::class);
         yield MenuItem::linkToCrud('Evenements', 'far fa-calendar', Event::class);

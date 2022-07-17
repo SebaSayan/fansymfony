@@ -24,8 +24,8 @@
 									<div class="carousel-item {% if img.active == true %}active{% endif %}">
 										<div class="d-flex justify-content-center">
 											<picture>
-												<source media="(max-width: 1000px)" srcset="assets/uploads/{{img.image}}small{{img.extention}}">
-												<img alt="{{img.name}}" class="d-block carouselSize logo w-100 h-100" src="assets/uploads/{{img.image}}large{{img.extention}}">
+												<source media="(max-width: 1000px)" srcset="public/assets/uploads/{{img.image}}small{{img.extention}}">
+												<img alt="{{img.name}}" class="d-block carouselSize logo w-100 h-100" src="public/assets/uploads/{{img.image}}large{{img.extention}}">
 											</picture>
 											<div class="text text-container">
 												<h3 class="fs-2">{{img.subtitle}}</h3>
@@ -78,13 +78,14 @@
 	<section class="display-photos" id="photos">
 		<h2 class="text-white text-center">Photos</h2>
 		<div class="container">
-			<iframe class="display-iframe" src="{{path('instagram')}}" width="100%" height="2700px"></iframe>
-			<script src="assets/js/instagram.js"></script>
-		</div>
-		<div class="message_avertissement_javascript alert alert-danger text-center m-0" role="alert">
-			Attention, le
-			<a href="#" class="alert-link">Javascript</a>
-			doit être activé pour le bon fonctionnement du site.<br>La section "Photos" est exclusiement conçu en Javascript.
+			<div data-mc-src="854d6bfb-8409-4e23-b180-77098ab34056#instagram"></div>
+
+			<script src="{{asset('public/assets/js/instagram2.js')}}" async data-usrc></script>
+			<div class="message_avertissement_javascript alert alert-danger text-center m-0" style:="font-family:'arial';" role=" alert">
+				Attention, le
+				<a href="#" class="alert-link">Javascript</a>
+				doit être activé pour le bon fonctionnement du site.<br>La section "Photos" est exclusiement conçu en Javascript.
+			</div>
 		</div>
 		<hr id="hr-1">
 	</section>
@@ -228,16 +229,16 @@
 
 	<section class="display-produits" id="produits">
 		<div class="container">
-			<div class="row">
+			<div class="row justify-content-center">
 				<div class="col">
 					<h2 class="text-white text-center">Nos produits</h1>
 				</div>
 				<div class="row d-flex justify-content-around">
 					{% for product in product %}
 						<div class="col-12 col-md-6 col-lg-4">
-							<div class="card mb-3 border cadre1 text-white" style="width: 18rem;" title="{{product.subtitle}}">
+							<div class="card mb-3 border cadre1 text-white" title="{{product.subtitle}}">
 								<a href="{{ path('show_product', {'slug': product.slug}) }}">
-									<img src="assets/uploads/{{product.illustration}}" class="card-img-top" alt="{{product.name}}"></a>
+									<img src="public/assets/uploads/{{product.illustration}}" class="card-img-top" alt="{{product.name}}"></a>
 								<div class="card-body">
 									<h5 class="card-title">{{product.name}}</h5>
 									<p class="card-text fw-bold">{{((product).price / 100) | number_format(2)}}
@@ -256,7 +257,7 @@
 		<div class="container-fluid">
 			<div class="row justify-content-center">
 				<div class="col-lg-8 col-xl-7">
-					<div class="text-white p-0 mb-3">Vous avez des questions sur nos prestations ? Contactez-nous par téléphone au 04 92 04 46 54, ou via ce formulaire de contact, nous vous répondrons dans les plus brefs délais.</div>
+					<div class="text-contact text-white p-0 mb-3">Vous avez des questions sur nos prestations ? Contactez-nous par téléphone au 04 92 04 46 54, ou via ce formulaire de contact, nous vous répondrons dans les plus brefs délais.</div>
 					{{form(form)}}
 					</div>
 				</div>
@@ -264,4 +265,13 @@
 		</div>
 		<hr id="hr-1">
 	</section>
+		<a href="#accueil">
+		<div class="top1">
+			<div class="top2">
+				<svg class="icon page" viewbox="0 0 24 24">
+					<path d="M7.997 10l3.515-3.79a.672.672 0 0 1 .89-.076l.086.075L16 10 13 10.001V18h-2v-7.999L7.997 10z"></path>
+				</svg>
+			</div>
+		</div>
+	</a>
 {% endblock %}

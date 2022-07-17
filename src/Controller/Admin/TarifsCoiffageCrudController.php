@@ -27,4 +27,5 @@ class TarifsCoiffageCrudController extends AbstractCrudController
             MoneyField::new('price_max')->setCurrency('EUR')->setLabel('Prix Max'),
         ];
     }
+    
 }

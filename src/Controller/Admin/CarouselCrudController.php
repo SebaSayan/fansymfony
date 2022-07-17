@@ -27,6 +27,7 @@ class CarouselCrudController extends AbstractCrudController
             BooleanField::new('active')->renderAsSwitch(false),
         ];
     }
+    
 
     /*
     public function configureFields(string $pageName): iterable

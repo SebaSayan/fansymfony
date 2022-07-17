@@ -13,7 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass=UserRepository::class)
  *   @UniqueEntity(
  *     fields={"email"},
- *     message="Cette email est déjà utilisé",groups={"registration"}
+ *     message="Cette adresse email est déjà utilisée",groups={"registration"}
  * )
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -43,27 +43,39 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      * @Assert\NotBlank(message="Vous devez renseigner un mot de passe",groups={"registration"})
-     * Assert\Regex(
+     * @Assert\Regex(
      *     pattern="#(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}#",
      *     match=true,
-     *     message="Le mot de passe doit contenir au moins un chiffre, au moins un lettre minuscule , majuscule et faire au minimum 8 caractères",groups={"registration"}
+     *     message="Le mot de passe doit contenir au moins un chiffre, une lettre minuscule , une lettre majuscule et faire au minimum 8 caractères",groups={"registration"}
      * )
      */
     private $password;
 
     /**
-     * @Assert\EqualTo(propertyPath="password",message="Les deux mots de passe ne sont pas identiques")
+     *@Assert\NotBlank(message="Vous devez renseigner une confirmation",groups={"registration"})
+     *@Assert\EqualTo(
+     *     propertyPath="password",
+     *     message="Les deux mots de passe ne sont pas identiques",groups={"registration"}
+     * )
      */
     public $password_confirm;
 
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez renseigner votre prénom",groups={"registration"})
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 10,
+     *      minMessage = "le prénom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le prénom ne doit pas dépasser {{ limit }} caractères",groups={"registration"}
+     * )
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez renseigner votre nom",groups={"registration"})
      */
     private $lastName;
 
@@ -92,16 +104,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $oldPassword;
 
     /**
-     * @Assert\Length(
-     * min = 5,
-     * minMessage="Votre mot de passe doit faire un minimun de 8 caractères",
-     *)
+     * @Assert\NotBlank(message="Vous devez renseigner un mot de passe")
+     * @Assert\Regex(
+     *     pattern="#(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}#",
+     *     match=true,
+     *     message="Le mot de passe doit contenir au moins un chiffre, au moins un lettre minuscule , majuscule et faire au minimum 8 caractères"
+     * )
      */
     private $newPassword;
 
-    /*confirmation du password*/
     /**
-     * @Assert\EqualTo(propertyPath="newPassword",message="Les deux mots de passe ne sont pas identiques")
+     *@Assert\EqualTo(
+     *     propertyPath="newPassword",
+     *     message="Les deux mots de passe ne sont pas identiques"
+     * )
      */
     private $confirmNewPassword;
 
